@@ -14,7 +14,7 @@ function TickerTrack({ items, reverse = false, speed = 'animate-marquee' }: {
   // also naturally increases the speed of the scroll.
   const extended = Array(6).fill(items).flat();
   return (
-    <div className={`flex overflow-hidden ${reverse ? 'flex-row-reverse' : ''}`} aria-hidden="true">
+    <div className="flex overflow-hidden" aria-hidden="true">
       <div className={`flex shrink-0 gap-0 ${speed} ${reverse ? 'animate-marquee-reverse' : ''}`}>
         {extended.map((item, i) => (
           <div key={i} className="flex items-center shrink-0">
