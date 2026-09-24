@@ -1,66 +1,260 @@
 'use client';
 
-const TICKER_1 = ['TRAIN HARD', 'STAY STRONG', 'NEVER QUIT', 'PUSH YOUR LIMITS', 'BUILT NOT BOUGHT', 'NO EXCUSES', 'SHARK MENTALITY', 'EARN IT'];
-const TICKER_2 = ['STRENGTH', 'DISCIPLINE', 'TRANSFORMATION', 'ENERGY', 'COMMUNITY', 'RESULTS', 'CONSISTENCY', 'POWER'];
+const TOP_TICKER = [
+  'TRAIN HARD',
+  'STAY STRONG',
+  'NEVER QUIT',
+  'PUSH YOUR LIMITS',
+  'BUILT NOT BOUGHT',
+  'NO EXCUSES',
+  'SHARK MENTALITY',
+  'EARN IT',
+];
 
-function TickerTrack({ items, reverse = false, speed = 'animate-marquee' }: {
+const BOTTOM_TICKER = [
+  'STRENGTH',
+  'DISCIPLINE',
+  'TRANSFORMATION',
+  'ENERGY',
+  'COMMUNITY',
+  'RESULTS',
+  'CONSISTENCY',
+  'POWER',
+];
+
+function TickerContent({
+  items,
+  reverse = false,
+}: {
   items: string[];
   reverse?: boolean;
-  speed?: string;
 }) {
-  // Replicate the items 6 times. This ensures the total width is massive, 
-  // preventing any blank spaces on ultra-wide monitors. 
-  // Since the CSS animation translates by -50%, having a longer track
-  // also naturally increases the speed of the scroll.
-  const extended = Array(6).fill(items).flat();
+  /*
+   * Two identical groups.
+   * The animation moves exactly one group width.
+   */
   return (
-    <div className="flex overflow-hidden" aria-hidden="true">
-      <div className={`flex shrink-0 gap-0 ${speed} ${reverse ? 'animate-marquee-reverse' : ''}`}>
-        {extended.map((item, i) => (
-          <div key={i} className="flex items-center shrink-0">
-            <span
-              className="px-6 text-black font-display whitespace-nowrap"
-              style={{ fontFamily: 'Bebas Neue, sans-serif', letterSpacing: '0.12em', fontSize: 'clamp(18px, 2.5vw, 28px)' }}
+    <div
+      className={`ticker-track ${reverse ? 'ticker-track-reverse' : ''
+        }`}
+    >
+      {[0, 1].map((group) => (
+        <div
+          key={group}
+          className="ticker-group"
+        >
+          {items.map((item, index) => (
+            <div
+              key={`${group}-${index}`}
+              className="ticker-item"
             >
-              {item}
-            </span>
-            <span className="text-black/40 font-display text-xl shrink-0" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>
-              /
-            </span>
-          </div>
-        ))}
-      </div>
+              <span className="ticker-text">
+                {item}
+              </span>
+
+              <span className="ticker-slash">
+                /
+              </span>
+            </div>
+          ))}
+        </div>
+      ))}
     </div>
   );
 }
 
 export default function MarqueeSection() {
   return (
-    <section id="marquee" className="relative overflow-hidden py-24 md:py-32 z-10 bg-black flex items-center justify-center min-h-[300px]">
-      {/* Top diagonal slash - keep it if you want, or just black bg */}
+    <section
+      id="marquee"
+      className="
+        relative
+        z-10
+        h-[220px]
+        sm:h-[240px]
+        md:h-[260px]
+        overflow-hidden
+        bg-[#030303]
+      "
+    >
+      {/* =====================================================
+          SUBTLE BACKGROUND
+      ====================================================== */}
+
       <div
-        className="absolute top-0 left-0 right-0 h-4 bg-[#030303] z-20"
-        style={{ clipPath: 'polygon(0 0, 100% 0, 100% 0, 0 100%)' }}
+        className="
+          absolute
+          inset-0
+          pointer-events-none
+        "
+        style={{
+          background: `
+            linear-gradient(
+              to bottom,
+              #030303 0%,
+              transparent 25%,
+              transparent 75%,
+              #030303 100%
+            )
+          `,
+        }}
       />
 
-      {/* Container for the overlapping tapes */}
-      <div className="relative w-full max-w-[100vw] h-full flex items-center justify-center">
-        
-        {/* Tape 1 — Tilted Down (Back) */}
-        <div 
-          className="absolute w-[130%] left-[-15%] bg-[#C6FF00] py-4 md:py-5 shadow-2xl z-10"
-          style={{ transform: 'rotate(6deg)' }}
-        >
-          <TickerTrack items={TICKER_1} speed="animate-marquee" />
-        </div>
+      {/* subtle horizontal technical line */}
+      <div
+        className="
+          absolute
+          left-0
+          right-0
+          top-1/2
+          h-px
+          bg-[#C6FF00]/10
+        "
+      />
 
-        {/* Tape 2 — Tilted Up (Front) */}
-        <div 
-          className="absolute w-[130%] left-[-15%] bg-[#C6FF00] py-4 md:py-5 shadow-2xl z-20"
-          style={{ transform: 'rotate(-6deg)' }}
+      {/* =====================================================
+          BACK TAPE
+      ====================================================== */}
+
+      <div
+        className="
+          absolute
+          left-[-25%]
+          right-[-25%]
+          top-1/2
+          z-10
+          -translate-y-1/2
+          rotate-[5deg]
+        "
+      >
+        <div
+          className="
+            relative
+            w-full
+            overflow-hidden
+            bg-[#B4E900]
+            border-y
+            border-black/10
+            py-3
+            sm:py-4
+            md:py-[18px]
+            shadow-[0_12px_35px_rgba(0,0,0,0.35)]
+          "
         >
-          <TickerTrack items={[...TICKER_1].reverse()} reverse speed="animate-marquee-slow" />
+          <TickerContent items={TOP_TICKER} />
         </div>
+      </div>
+
+      {/* =====================================================
+          FRONT TAPE
+      ====================================================== */}
+
+      <div
+        className="
+          absolute
+          left-[-25%]
+          right-[-25%]
+          top-1/2
+          z-20
+          -translate-y-1/2
+          -rotate-[5deg]
+        "
+      >
+        <div
+          className="
+            relative
+            w-full
+            overflow-hidden
+            bg-[#C6FF00]
+            border-y
+            border-black/15
+            py-3
+            sm:py-4
+            md:py-[18px]
+            shadow-[0_15px_40px_rgba(0,0,0,0.45)]
+          "
+        >
+          <TickerContent
+            items={BOTTOM_TICKER}
+            reverse
+          />
+        </div>
+      </div>
+
+      {/* =====================================================
+          TOP FADE
+      ====================================================== */}
+
+      <div
+        className="
+          absolute
+          left-0
+          right-0
+          top-0
+          h-16
+          z-30
+          pointer-events-none
+        "
+        style={{
+          background:
+            'linear-gradient(to bottom, #030303, transparent)',
+        }}
+      />
+
+      {/* =====================================================
+          BOTTOM FADE
+      ====================================================== */}
+
+      <div
+        className="
+          absolute
+          left-0
+          right-0
+          bottom-0
+          h-16
+          z-30
+          pointer-events-none
+        "
+        style={{
+          background:
+            'linear-gradient(to top, #030303, transparent)',
+        }}
+      />
+
+      {/* =====================================================
+          TECHNICAL LABEL
+      ====================================================== */}
+
+      <div
+        className="
+          absolute
+          bottom-5
+          left-1/2
+          -translate-x-1/2
+          z-40
+          hidden
+          md:flex
+          items-center
+          gap-3
+          whitespace-nowrap
+          text-[9px]
+          uppercase
+          tracking-[0.25em]
+          text-white/20
+        "
+        style={{
+          fontFamily: 'Barlow Condensed, sans-serif',
+        }}
+      >
+        <span className="w-7 h-px bg-[#C6FF00]/30" />
+
+        THE SHARK FITNESS
+        <span className="text-[#C6FF00]/50">
+          /
+        </span>
+        INDORE
+
+        <span className="w-7 h-px bg-[#C6FF00]/30" />
       </div>
     </section>
   );

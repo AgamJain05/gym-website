@@ -38,10 +38,17 @@ html {
   scroll-padding-top: 110px;
 }
 
-button, a, input, textarea {
+button,
+a,
+input,
+textarea {
   outline: none;
 }
-button:focus, a:focus, input:focus, textarea:focus {
+
+button:focus,
+a:focus,
+input:focus,
+textarea:focus {
   outline: none;
 }
 
@@ -58,9 +65,11 @@ body {
 ::-webkit-scrollbar {
   width: 4px;
 }
+
 ::-webkit-scrollbar-track {
   background: var(--black);
 }
+
 ::-webkit-scrollbar-thumb {
   background: var(--lime);
   border-radius: 2px;
@@ -76,18 +85,23 @@ body {
 .font-display {
   font-family: 'Bebas Neue', sans-serif;
 }
+
 .font-condensed {
   font-family: 'Barlow Condensed', sans-serif;
 }
+
 .font-body {
   font-family: 'Inter', sans-serif;
 }
+
 .text-lime {
   color: var(--lime);
 }
+
 .bg-lime {
   background-color: var(--lime);
 }
+
 .border-lime {
   border-color: var(--lime);
 }
@@ -96,6 +110,7 @@ body {
 .lime-glow {
   box-shadow: 0 0 20px rgba(198, 255, 0, 0.3), 0 0 60px rgba(198, 255, 0, 0.1);
 }
+
 .lime-text-glow {
   text-shadow: 0 0 20px rgba(198, 255, 0, 0.5);
 }
@@ -104,6 +119,7 @@ body {
 .corner-bracket {
   position: relative;
 }
+
 .corner-bracket::before,
 .corner-bracket::after {
   content: '';
@@ -113,11 +129,13 @@ body {
   border-color: var(--lime);
   border-style: solid;
 }
+
 .corner-bracket::before {
   top: 0;
   left: 0;
   border-width: 1px 0 0 1px;
 }
+
 .corner-bracket::after {
   bottom: 0;
   right: 0;
@@ -128,6 +146,7 @@ body {
 .diagonal-separator {
   clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
 }
+
 .diagonal-separator-top {
   clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
 }
@@ -136,6 +155,7 @@ body {
 .grain-overlay {
   position: relative;
 }
+
 .grain-overlay::after {
   content: '';
   position: absolute;
@@ -148,44 +168,74 @@ body {
 
 /* Animated Marquee */
 @keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
 }
+
 @keyframes marquee-reverse {
-  from { transform: translateX(-50%); }
-  to { transform: translateX(0); }
+  from {
+    transform: translateX(-50%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
 }
+
 .animate-marquee {
   animation: marquee 25s linear infinite;
 }
+
 .animate-marquee-slow {
   animation: marquee 40s linear infinite;
 }
+
 .animate-marquee-reverse {
   animation: marquee-reverse 30s linear infinite;
 }
 
 /* Pulse lime animation */
 @keyframes pulse-lime {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.6; }
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.6;
+  }
 }
+
 .animate-pulse-lime {
   animation: pulse-lime 2s ease-in-out infinite;
 }
 
 /* Float animation */
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
 }
+
 .animate-float {
   animation: float 4s ease-in-out infinite;
 }
 
 /* Grid background utility */
 .bg-grid {
-  background-image: 
+  background-image:
     linear-gradient(rgba(198, 255, 0, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(198, 255, 0, 0.03) 1px, transparent 1px);
   background-size: 60px 60px;
@@ -193,18 +243,29 @@ body {
 
 /* Progress bar fill */
 @keyframes progress-fill {
-  from { width: 0%; }
-  to { width: var(--target-width); }
+  from {
+    width: 0%;
+  }
+
+  to {
+    width: var(--target-width);
+  }
 }
 
 /* Scan line effect */
 @keyframes scan {
-  from { transform: translateY(-100%); }
-  to { transform: translateY(100vh); }
+  from {
+    transform: translateY(-100%);
+  }
+
+  to {
+    transform: translateY(100vh);
+  }
 }
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
+
   .animate-marquee,
   .animate-marquee-slow,
   .animate-marquee-reverse,
@@ -250,6 +311,7 @@ body {
   line-height: 0.92;
   letter-spacing: 0.02em;
 }
+
 .heading-condensed {
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 800;
@@ -264,6 +326,7 @@ body {
   border-radius: 2px;
   transition: all 0.3s ease;
 }
+
 .card-dark:hover {
   border-color: rgba(198, 255, 0, 0.3);
   background: var(--black-3);
@@ -287,6 +350,7 @@ body {
   transition: all 0.25s ease;
   clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
 }
+
 .btn-lime:hover {
   background: var(--lime-light);
   transform: translateY(-2px);
@@ -309,6 +373,7 @@ body {
   cursor: pointer;
   transition: all 0.25s ease;
 }
+
 .btn-outline:hover {
   border-color: var(--lime);
   color: var(--lime);
@@ -327,4 +392,123 @@ body {
   font-size: 13px;
   color: var(--lime);
   letter-spacing: 0.1em;
+}
+
+/* =========================================================
+   SHARK FITNESS MARQUEE
+========================================================= */
+
+.ticker-track {
+  display: flex;
+  width: max-content;
+  flex-shrink: 0;
+
+  animation:
+    shark-marquee 28s linear infinite;
+
+  will-change: transform;
+}
+
+.ticker-track-reverse {
+  animation-name: shark-marquee-reverse;
+  animation-duration: 24s;
+}
+
+.ticker-group {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.ticker-item {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.ticker-text {
+  display: block;
+
+  padding-left: 22px;
+  padding-right: 22px;
+
+  color: #050505;
+
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(22px, 2.6vw, 38px);
+  font-weight: 400;
+
+  line-height: 1;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+.ticker-slash {
+  display: block;
+
+  color: rgba(0, 0, 0, 0.28);
+
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(22px, 2.5vw, 34px);
+
+  line-height: 1;
+}
+
+/* =========================================================
+   SEAMLESS ANIMATION
+========================================================= */
+
+@keyframes shark-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes shark-marquee-reverse {
+  from {
+    transform: translate3d(-50%, 0, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 640px) {
+  .ticker-text {
+    padding-left: 16px;
+    padding-right: 16px;
+
+    font-size: 22px;
+  }
+
+  .ticker-slash {
+    font-size: 20px;
+  }
+
+  .ticker-track {
+    animation-duration: 24s;
+  }
+
+  .ticker-track-reverse {
+    animation-duration: 21s;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track {
+    animation-play-state: paused;
+  }
 }
