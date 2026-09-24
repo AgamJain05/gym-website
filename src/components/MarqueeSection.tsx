@@ -8,11 +8,15 @@ function TickerTrack({ items, reverse = false, speed = 'animate-marquee' }: {
   reverse?: boolean;
   speed?: string;
 }) {
-  const doubled = [...items, ...items];
+  // Replicate the items 6 times. This ensures the total width is massive, 
+  // preventing any blank spaces on ultra-wide monitors. 
+  // Since the CSS animation translates by -50%, having a longer track
+  // also naturally increases the speed of the scroll.
+  const extended = Array(6).fill(items).flat();
   return (
     <div className={`flex overflow-hidden ${reverse ? 'flex-row-reverse' : ''}`} aria-hidden="true">
       <div className={`flex shrink-0 gap-0 ${speed} ${reverse ? 'animate-marquee-reverse' : ''}`}>
-        {doubled.map((item, i) => (
+        {extended.map((item, i) => (
           <div key={i} className="flex items-center shrink-0">
             <span
               className="px-6 text-black font-display whitespace-nowrap"
@@ -32,40 +36,31 @@ function TickerTrack({ items, reverse = false, speed = 'animate-marquee' }: {
 
 export default function MarqueeSection() {
   return (
-    <section id="marquee" className="relative overflow-hidden py-0 z-10">
-      {/* Top diagonal slash */}
+    <section id="marquee" className="relative overflow-hidden py-24 md:py-32 z-10 bg-black flex items-center justify-center min-h-[300px]">
+      {/* Top diagonal slash - keep it if you want, or just black bg */}
       <div
-        className="absolute top-0 left-0 right-0 h-4 bg-black z-10"
+        className="absolute top-0 left-0 right-0 h-4 bg-[#030303] z-20"
         style={{ clipPath: 'polygon(0 0, 100% 0, 100% 0, 0 100%)' }}
       />
 
-      {/* Row 1 — Lime */}
-      <div className="bg-[#C6FF00] py-3 relative overflow-hidden">
-        <TickerTrack items={TICKER_1} speed="animate-marquee" />
-      </div>
-
-      {/* Row 2 — Dark with lime text */}
-      <div className="bg-[#050505] py-2.5 relative overflow-hidden border-y border-[#C6FF00]/10">
-        <div className="flex overflow-hidden">
-          <div className="flex shrink-0 gap-0 animate-marquee-slow animate-marquee-reverse">
-            {[...TICKER_2, ...TICKER_2].map((item, i) => (
-              <div key={i} className="flex items-center shrink-0">
-                <span
-                  className="px-6 text-[#C6FF00]/40 font-display whitespace-nowrap"
-                  style={{ fontFamily: 'Bebas Neue, sans-serif', letterSpacing: '0.15em', fontSize: 'clamp(13px, 1.5vw, 18px)' }}
-                >
-                  {item}
-                </span>
-                <span className="text-[#C6FF00]/20 text-sm shrink-0">◆</span>
-              </div>
-            ))}
-          </div>
+      {/* Container for the overlapping tapes */}
+      <div className="relative w-full max-w-[100vw] h-full flex items-center justify-center">
+        
+        {/* Tape 1 — Tilted Down (Back) */}
+        <div 
+          className="absolute w-[130%] left-[-15%] bg-[#C6FF00] py-4 md:py-5 shadow-2xl z-10"
+          style={{ transform: 'rotate(6deg)' }}
+        >
+          <TickerTrack items={TICKER_1} speed="animate-marquee" />
         </div>
-      </div>
 
-      {/* Row 3 — Lime again, slightly slower */}
-      <div className="bg-[#C6FF00] py-3 relative overflow-hidden">
-        <TickerTrack items={[...TICKER_1].reverse()} reverse speed="animate-marquee-slow" />
+        {/* Tape 2 — Tilted Up (Front) */}
+        <div 
+          className="absolute w-[130%] left-[-15%] bg-[#C6FF00] py-4 md:py-5 shadow-2xl z-20"
+          style={{ transform: 'rotate(-6deg)' }}
+        >
+          <TickerTrack items={[...TICKER_1].reverse()} reverse speed="animate-marquee-slow" />
+        </div>
       </div>
     </section>
   );

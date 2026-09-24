@@ -82,6 +82,9 @@ export default function HomePage() {
 
       <Navbar />
 
+      {/* Spacer to physically separate Navbar from Hero */}
+      <div className="h-[90px] md:h-[100px] w-full bg-[#030303]" />
+
       {/* 01 — Hero */}
       <HeroSection />
 
