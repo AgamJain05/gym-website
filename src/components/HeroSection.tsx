@@ -1,30 +1,28 @@
 'use client';
 
 import { AnimatePresence, motion } from 'framer-motion';
-import { ArrowDownRight, ArrowRight, Dumbbell, Zap } from 'lucide-react';
+import { ArrowDownRight, ArrowRight } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
+
+const HERO_IMAGE =
+  'https://res.cloudinary.com/dh05cgeok/image/upload/v1790283632/Front_Image_tyazvk.png';
 
 const heroLines = [
   {
     eyebrow: '01 / THE SHARK FITNESS',
-    line1: 'GET',
-    line2: 'FIT.',
-    line3: 'GET STRONG.',
-    line4: 'STAY SHARK.',
+    line1: 'REACH YOUR',
+    line2: 'BEST SHAPE.',
   },
   {
     eyebrow: '01 / THE SHARK FITNESS',
-    line1: 'TRAIN',
-    line2: 'HARD.',
-    line3: 'LIVE STRONG.',
-    line4: 'STAY SHARK.',
+    line1: 'TRAIN HARD.',
+    line2: 'LIVE STRONG.',
   },
   {
     eyebrow: '01 / THE SHARK FITNESS',
-    line1: 'BUILD',
-    line2: 'POWER.',
-    line3: 'BUILD DISCIPLINE.',
-    line4: 'STAY SHARK.',
+    line1: 'BUILD POWER.',
+    line2: 'BUILD DISCIPLINE.',
   },
 ];
 
@@ -34,7 +32,7 @@ export default function HeroSection() {
   useEffect(() => {
     const interval = window.setInterval(() => {
       setActiveHero((prev) => (prev + 1) % heroLines.length);
-    }, 4500);
+    }, 5000);
 
     return () => window.clearInterval(interval);
   }, []);
@@ -45,8 +43,11 @@ export default function HeroSection() {
     if (!element) return;
 
     const offset = 82;
+
     const top =
-      element.getBoundingClientRect().top + window.scrollY - offset;
+      element.getBoundingClientRect().top +
+      window.scrollY -
+      offset;
 
     window.scrollTo({
       top: Math.max(0, top),
@@ -70,17 +71,28 @@ export default function HeroSection() {
       {/* =========================================================
           BACKGROUND
       ========================================================== */}
+
       <div className="absolute inset-0 pointer-events-none">
         {/* Base */}
         <div className="absolute inset-0 bg-[#030303]" />
 
-        {/* Subtle grid */}
+        {/* Grid */}
         <div
-          className="absolute inset-0 opacity-[0.045]"
+          className="
+            absolute inset-0
+            opacity-[0.035]
+          "
           style={{
             backgroundImage: `
-              linear-gradient(rgba(255,255,255,0.35) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(255,255,255,0.35) 1px, transparent 1px)
+              linear-gradient(
+                rgba(255,255,255,0.35) 1px,
+                transparent 1px
+              ),
+              linear-gradient(
+                90deg,
+                rgba(255,255,255,0.35) 1px,
+                transparent 1px
+              )
             `,
             backgroundSize: '72px 72px',
             maskImage:
@@ -90,637 +102,481 @@ export default function HeroSection() {
           }}
         />
 
-        {/* Lime glow */}
+        {/* Top lime atmosphere */}
         <div
           className="
             absolute
-            -top-[20%]
-            right-[-12%]
-            w-[700px]
-            h-[700px]
+            -top-[25%]
+            left-1/2
+            -translate-x-1/2
+            w-[800px]
+            h-[800px]
             rounded-full
-            blur-[100px]
-            opacity-20
+            blur-[140px]
+            opacity-15
           "
           style={{
             background:
-              'radial-gradient(circle, rgba(198,255,0,0.22) 0%, rgba(198,255,0,0) 68%)',
+              'radial-gradient(circle, rgba(198,255,0,0.28) 0%, rgba(198,255,0,0) 68%)',
           }}
         />
 
-        <div
-          className="
-            absolute
-            bottom-[-25%]
-            left-[-10%]
-            w-[520px]
-            h-[520px]
-            rounded-full
-            blur-[100px]
-            opacity-10
-          "
-          style={{
-            background:
-              'radial-gradient(circle, rgba(198,255,0,0.25) 0%, rgba(198,255,0,0) 70%)',
-          }}
-        />
-
-        {/* Large diagonal lines */}
-        <svg
-          className="absolute inset-0 w-full h-full opacity-[0.06]"
-          viewBox="0 0 1440 900"
-          preserveAspectRatio="none"
-          aria-hidden="true"
-        >
-          <line
-            x1="0"
-            y1="760"
-            x2="1440"
-            y2="170"
-            stroke="#C6FF00"
-            strokeWidth="1"
-          />
-          <line
-            x1="150"
-            y1="900"
-            x2="1440"
-            y2="360"
-            stroke="#C6FF00"
-            strokeWidth="0.5"
-          />
-          <circle
-            cx="1210"
-            cy="150"
-            r="210"
-            fill="none"
-            stroke="#C6FF00"
-            strokeWidth="0.5"
-          />
-          <circle
-            cx="1210"
-            cy="150"
-            r="330"
-            fill="none"
-            stroke="#C6FF00"
-            strokeWidth="0.35"
-          />
-          <polygon
-            points="70,760 250,530 365,760"
-            fill="none"
-            stroke="#C6FF00"
-            strokeWidth="0.5"
-          />
-        </svg>
-
-        {/* Bottom fade */}
+        {/* Bottom dark fade */}
         <div
           className="
             absolute
             inset-x-0
             bottom-0
-            h-48
+            h-[45%]
           "
           style={{
             background:
               'linear-gradient(to top, #030303 0%, rgba(3,3,3,0) 100%)',
           }}
         />
+
+        {/* Subtle diagonal */}
+        <div
+          className="
+            absolute
+            left-[-10%]
+            bottom-[15%]
+            w-[120%]
+            h-px
+            rotate-[-8deg]
+            bg-[#C6FF00]/[0.08]
+          "
+        />
+
+        <div
+          className="
+            absolute
+            left-[-10%]
+            bottom-[12%]
+            w-[120%]
+            h-px
+            rotate-[-8deg]
+            bg-white/[0.04]
+          "
+        />
       </div>
 
       {/* =========================================================
-          MAIN CONTENT
+          GIANT BACKGROUND TYPOGRAPHY
+          THIS LAYER IS BEHIND THE PEOPLE
       ========================================================== */}
+
       <div
         className="
-          relative
+          absolute
+          inset-x-0
+          top-[7vh]
+          sm:top-[8vh]
+          lg:top-[5vh]
           z-10
-          min-h-[100svh]
-          container-shark
-          flex
-          flex-col
-          pt-[220px]
-          lg:pt-[260px]
-          pb-[160px]
+          pointer-events-none
+          select-none
+          px-4
+          sm:px-8
+          lg:px-10
         "
       >
-        <div
-          className="
-            w-full
-            my-auto
-            grid
-            grid-cols-1
-            lg:grid-cols-[1.08fr_0.92fr]
-            gap-12
-            xl:gap-20
-            items-center
-          "
-        >
-          {/* =====================================================
-              LEFT CONTENT
-          ====================================================== */}
-          <div className="relative z-20 max-w-4xl">
-            {/* Eyebrow */}
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="flex items-center gap-3 mb-7"
-            >
-              <span className="block w-10 h-px bg-[#C6FF00]" />
+        <div className="container-shark mx-auto">
+          {/* Eyebrow */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="
+              flex
+              items-center
+              justify-center
+              gap-3
+              mb-4
+              sm:mb-6
+            "
+          >
+            <span className="w-8 sm:w-10 h-px bg-[#C6FF00]" />
 
-              <span
-                className="
-                  text-[10px]
-                  sm:text-[11px]
-                  uppercase
-                  tracking-[0.24em]
-                  text-white/50
-                  font-semibold
-                "
-                style={{
-                  fontFamily: 'Barlow Condensed, sans-serif',
-                }}
-              >
-                {hero.eyebrow}
-              </span>
-
-              <span className="text-[#C6FF00] text-[10px]">
-                IND
-              </span>
-            </motion.div>
-
-            {/* =================================================
-                ANIMATED HEADLINE
-            ================================================== */}
-            <div className="relative min-h-[330px] sm:min-h-[390px] lg:min-h-[430px]">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeHero}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -30 }}
-                  transition={{
-                    duration: 0.45,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
-                  className="absolute inset-0"
-                >
-                  <HeroHeadline hero={hero} />
-                </motion.div>
-              </AnimatePresence>
-            </div>
-
-            {/* Supporting copy */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                delay: 0.45,
-                duration: 0.6,
-              }}
+            <span
               className="
-                max-w-xl
-                text-sm
-                sm:text-base
-                md:text-lg
-                leading-relaxed
-                text-white/55
-                mt-6
+                text-[9px]
+                sm:text-[10px]
+                uppercase
+                tracking-[0.25em]
+                text-white/40
+                font-semibold
               "
               style={{
-                fontFamily: 'Inter, sans-serif',
+                fontFamily: 'Barlow Condensed, sans-serif',
               }}
             >
-              A serious training environment for people who want to become
-              stronger, fitter and more disciplined.
-            </motion.p>
+              {hero.eyebrow}
+            </span>
 
-            {/* CTAs */}
+            <span
+              className="
+                text-[#C6FF00]
+                text-[9px]
+                sm:text-[10px]
+                tracking-[0.2em]
+              "
+              style={{
+                fontFamily: 'Barlow Condensed, sans-serif',
+              }}
+            >
+              IND
+            </span>
+          </motion.div>
+
+          <AnimatePresence mode="wait">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              key={activeHero}
+              initial={{ opacity: 0, y: 25 }}
               animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -25 }}
               transition={{
-                delay: 0.6,
                 duration: 0.55,
-              }}
-              className="
-                flex
-                flex-col
-                sm:flex-row
-                gap-3
-                mt-8
-              "
-            >
-              <button
-                type="button"
-                onClick={() => scrollTo('contact')}
-                className="
-                  group
-                  inline-flex
-                  items-center
-                  justify-center
-                  gap-3
-                  h-14
-                  px-7
-                  bg-[#C6FF00]
-                  text-black
-                  text-xs
-                  font-bold
-                  tracking-[0.16em]
-                  uppercase
-                  transition-all
-                  duration-300
-                  hover:bg-[#d5ff45]
-                  hover:-translate-y-0.5
-                "
-                style={{
-                  fontFamily: 'Barlow Condensed, sans-serif',
-                }}
-              >
-                JOIN NOW
-
-                <ArrowRight
-                  size={16}
-                  className="
-                    transition-transform
-                    duration-300
-                    group-hover:translate-x-1
-                  "
-                />
-              </button>
-
-              <button
-                type="button"
-                onClick={() => scrollTo('gallery')}
-                className="
-                  group
-                  inline-flex
-                  items-center
-                  justify-center
-                  gap-3
-                  h-14
-                  px-7
-                  border
-                  border-white/15
-                  bg-white/[0.02]
-                  text-white
-                  text-xs
-                  font-bold
-                  tracking-[0.16em]
-                  uppercase
-                  transition-all
-                  duration-300
-                  hover:border-[#C6FF00]/60
-                  hover:text-[#C6FF00]
-                  hover:bg-white/[0.04]
-                "
-                style={{
-                  fontFamily: 'Barlow Condensed, sans-serif',
-                }}
-              >
-                EXPLORE THE GYM
-
-                <ArrowDownRight
-                  size={16}
-                  className="
-                    transition-transform
-                    duration-300
-                    group-hover:rotate-[-10deg]
-                  "
-                />
-              </button>
-            </motion.div>
-
-            {/* Stats */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{
-                delay: 0.85,
-                duration: 0.7,
-              }}
-              className="
-                grid
-                grid-cols-3
-                max-w-2xl
-                mt-12
-                pt-8
-                border-t
-                border-white/[0.08]
-              "
-            >
-              <HeroStat value="01" label="GOAL" />
-              <HeroStat value="24/7" label="DISCIPLINE" />
-              <HeroStat value="IND" label="LOCATION" />
-            </motion.div>
-          </div>
-
-          {/* =====================================================
-              RIGHT VISUAL
-          ====================================================== */}
-          <div className="relative hidden lg:flex min-h-[620px] items-center justify-center">
-            {/* Giant SHARK watermark */}
-            <div
-              className="
-                absolute
-                right-[-10%]
-                top-1/2
-                -translate-y-1/2
-                text-[210px]
-                xl:text-[260px]
-                leading-none
-                font-bold
-                text-white/[0.018]
-                select-none
-                whitespace-nowrap
-              "
-              style={{
-                fontFamily: 'Bebas Neue, sans-serif',
-                letterSpacing: '-0.03em',
-              }}
-            >
-              SHARK
-            </div>
-
-            {/* Main visual frame */}
-            <motion.div
-              initial={{
-                opacity: 0,
-                x: 50,
-                scale: 0.96,
-              }}
-              animate={{
-                opacity: 1,
-                x: 0,
-                scale: 1,
-              }}
-              transition={{
-                delay: 0.35,
-                duration: 0.9,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="
-                relative
-                w-[390px]
-                xl:w-[440px]
-                h-[540px]
-                xl:h-[590px]
-              "
             >
-              {/* Outer technical frame */}
-              <div className="absolute inset-0 border border-white/10" />
-
-              <div className="absolute -top-2 -left-2 w-14 h-14 border-t-2 border-l-2 border-[#C6FF00]" />
-              <div className="absolute -bottom-2 -right-2 w-14 h-14 border-b-2 border-r-2 border-[#C6FF00]" />
-
-              {/* Placeholder visual surface
-                  Replace this with the actual Shark Fitness image */}
-              <div
-                className="
-                  absolute
-                  inset-4
-                  overflow-hidden
-                  bg-[#101010]
-                "
-              >
-                <div
-                  className="
-                    absolute
-                    inset-0
-                  "
-                  style={{
-                    background: `
-                      radial-gradient(
-                        circle at 70% 25%,
-                        rgba(198,255,0,0.18),
-                        transparent 28%
-                      ),
-                      linear-gradient(
-                        145deg,
-                        rgba(255,255,255,0.03),
-                        transparent 48%
-                      ),
-                      linear-gradient(
-                        180deg,
-                        #161616 0%,
-                        #070707 100%
-                      )
-                    `,
-                  }}
-                />
-
-                {/* Abstract athlete silhouette */}
-                <div
-                  className="
-                    absolute
-                    left-1/2
-                    bottom-0
-                    -translate-x-1/2
-                    w-[260px]
-                    h-[430px]
-                    opacity-20
-                    blur-[1px]
-                  "
-                  style={{
-                    background:
-                      'radial-gradient(ellipse at center, rgba(198,255,0,0.35) 0%, rgba(198,255,0,0.08) 30%, transparent 68%)',
-                  }}
-                />
-
-                {/* Vertical technical line */}
-                <div className="absolute top-0 bottom-0 left-1/2 w-px bg-white/[0.05]" />
-
-                {/* Visual number */}
-                <div
-                  className="
-                    absolute
-                    bottom-8
-                    left-8
-                    text-[130px]
-                    leading-none
-                    text-white/[0.06]
-                  "
-                  style={{
-                    fontFamily: 'Bebas Neue, sans-serif',
-                  }}
-                >
-                  01
-                </div>
-
-                {/* Label */}
-                <div className="absolute left-7 top-7">
-                  <div
-                    className="
-                      text-[9px]
-                      uppercase
-                      tracking-[0.22em]
-                      text-[#C6FF00]
-                      mb-2
-                    "
-                    style={{
-                      fontFamily: 'Barlow Condensed, sans-serif',
-                    }}
-                  >
-                    PERFORMANCE / 001
-                  </div>
-
-                  <div
-                    className="
-                      text-2xl
-                      uppercase
-                      text-white
-                    "
-                    style={{
-                      fontFamily: 'Bebas Neue, sans-serif',
-                    }}
-                  >
-                    TRAIN HARD.
-                  </div>
-                </div>
-              </div>
-
-              {/* Floating information card */}
-              <motion.div
-                animate={{ y: [0, -8, 0] }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
-                className="
-                  absolute
-                  left-[-70px]
-                  bottom-12
-                  w-[190px]
-                  bg-[#0b0b0b]/95
-                  backdrop-blur-xl
-                  border
-                  border-white/10
-                  p-4
-                "
-              >
-                <div className="flex items-center justify-between">
-                  <div
-                    className="
-                      text-[9px]
-                      uppercase
-                      tracking-[0.18em]
-                      text-white/35
-                    "
-                    style={{
-                      fontFamily: 'Barlow Condensed, sans-serif',
-                    }}
-                  >
-                    TRAINING MODE
-                  </div>
-
-                  <Zap
-                    size={13}
-                    className="text-[#C6FF00]"
-                  />
-                </div>
-
-                <div
-                  className="
-                    text-3xl
-                    mt-2
-                    text-white
-                  "
-                  style={{
-                    fontFamily: 'Bebas Neue, sans-serif',
-                  }}
-                >
-                  FULL POWER
-                </div>
-
-                <div className="flex gap-1 mt-3">
-                  {Array.from({ length: 8 }).map((_, i) => (
-                    <span
-                      key={i}
-                      className={`
-                        h-1.5
-                        flex-1
-                        ${i < 6
-                          ? 'bg-[#C6FF00]'
-                          : 'bg-white/10'
-                        }
-                      `}
-                    />
-                  ))}
-                </div>
-              </motion.div>
-
-              {/* Floating icon */}
-              <motion.div
-                animate={{ y: [0, 7, 0] }}
-                transition={{
-                  duration: 3.5,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
-                className="
-                  absolute
-                  right-[-28px]
-                  top-20
-                  w-14
-                  h-14
-                  bg-[#C6FF00]
-                  text-black
-                  flex
-                  items-center
-                  justify-center
-                "
-              >
-                <Dumbbell size={21} />
-              </motion.div>
+              <HeroHeadline hero={hero} />
             </motion.div>
-          </div>
+          </AnimatePresence>
         </div>
       </div>
 
       {/* =========================================================
-          BOTTOM SCROLL / SLIDE INDICATOR
+          ATHLETE IMAGE
+          THIS IS IN FRONT OF THE TEXT
       ========================================================== */}
+
+      <motion.div
+        initial={{
+          opacity: 0,
+          y: 45,
+          scale: 0.97,
+        }}
+        animate={{
+          opacity: 1,
+          y: 0,
+          scale: 1,
+        }}
+        transition={{
+          duration: 1.1,
+          delay: 0.2,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+        className="
+          absolute
+          z-20
+          pointer-events-none
+
+          bottom-[25%]
+          left-1/2
+          -translate-x-1/2
+
+          w-[125vw]
+          max-w-none
+          h-[72vh]
+
+          sm:w-[105vw]
+          sm:h-[76vh]
+          sm:bottom-[16%]
+
+          lg:w-[780px]
+          lg:h-[770px]
+          lg:bottom-[6%]
+
+          xl:w-[850px]
+          xl:h-[820px]
+        "
+      >
+        <Image
+          src={HERO_IMAGE}
+          alt="Athletes training at The Shark Fitness"
+          fill
+          priority
+          sizes="
+            (max-width: 640px) 125vw,
+            (max-width: 1024px) 105vw,
+            850px
+          "
+          className="
+            object-contain
+            object-bottom
+            drop-shadow-[0_0_45px_rgba(198,255,0,0.08)]
+          "
+        />
+      </motion.div>
+
+      {/* =========================================================
+          SUPPORTING COPY
+      ========================================================== */}
+
       <div
         className="
           absolute
-          left-0
-          right-0
-          bottom-5
-          z-20
-          container-shark
-          flex
-          items-end
-          justify-between
-          pointer-events-none
+          z-30
+
+          left-5
+          right-5
+          bottom-[145px]
+
+          sm:left-8
+          sm:right-8
+
+          lg:left-auto
+          lg:right-[7vw]
+          lg:bottom-[28%]
+
+          xl:right-[9vw]
+          xl:bottom-[27%]
+
+          max-w-[330px]
+          sm:max-w-[360px]
+          lg:max-w-[300px]
+          xl:max-w-[350px]
         "
       >
-        <div
+        <motion.div
+          initial={{ opacity: 0, x: 25 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{
+            delay: 0.65,
+            duration: 0.7,
+          }}
           className="
-            hidden
-            sm:block
-            text-[9px]
+            border-l
+            border-[#C6FF00]/60
+            pl-4
+            sm:pl-5
+          "
+        >
+          <p
+            className="
+              text-xs
+              sm:text-sm
+              lg:text-[14px]
+              leading-relaxed
+              text-white/60
+            "
+            style={{
+              fontFamily: 'Inter, sans-serif',
+            }}
+          >
+            Train with purpose. Build strength, discipline
+            and confidence in an environment designed for
+            people who want more from themselves.
+          </p>
+        </motion.div>
+      </div>
+
+      {/* =========================================================
+          CTA
+      ========================================================== */}
+
+      <motion.div
+        initial={{
+          opacity: 0,
+          y: 20,
+        }}
+        animate={{
+          opacity: 1,
+          y: 0,
+        }}
+        transition={{
+          delay: 0.8,
+          duration: 0.6,
+        }}
+        className="
+          absolute
+          z-40
+
+          left-5
+          sm:left-8
+          lg:left-[5vw]
+          xl:left-[7vw]
+
+          bottom-6
+          sm:bottom-10
+          lg:bottom-12
+
+          flex
+          flex-row
+          gap-2
+          sm:gap-3
+        "
+      >
+        {/* Primary */}
+        <button
+          type="button"
+          onClick={() => scrollTo('contact')}
+          className="
+            group
+            inline-flex
+            items-center
+            justify-center
+            gap-2
+
+            h-10
+            sm:h-12
+            lg:h-14
+
+            px-4
+            sm:px-6
+            lg:px-7
+
+            bg-[#C6FF00]
+            text-black
+
+            text-[10px]
+            sm:text-[11px]
+            lg:text-xs
+
+            font-bold
             uppercase
-            tracking-[0.22em]
-            text-white/25
+            tracking-[0.14em]
+            sm:tracking-[0.16em]
+
+            transition-all
+            duration-300
+
+            hover:bg-[#d5ff45]
+            hover:-translate-y-0.5
           "
           style={{
             fontFamily: 'Barlow Condensed, sans-serif',
           }}
         >
+          JOIN NOW
 
+          <ArrowRight
+            size={16}
+            className="
+              transition-transform
+              duration-300
+              group-hover:translate-x-1
+            "
+          />
+        </button>
+
+        {/* Secondary */}
+        <button
+          type="button"
+          onClick={() => scrollTo('gallery')}
+          className="
+            group
+            inline-flex
+            items-center
+            justify-center
+            gap-2
+
+            h-10
+            sm:h-12
+            lg:h-14
+
+            px-4
+            sm:px-6
+            lg:px-7
+
+            border
+            border-white/15
+
+            bg-white/[0.02]
+
+            text-white
+
+            text-[10px]
+            sm:text-[11px]
+            lg:text-xs
+
+            font-bold
+            uppercase
+            tracking-[0.14em]
+            sm:tracking-[0.16em]
+
+            transition-all
+            duration-300
+
+            hover:border-[#C6FF00]/60
+            hover:text-[#C6FF00]
+          "
+          style={{
+            fontFamily: 'Barlow Condensed, sans-serif',
+          }}
+        >
+          EXPLORE THE GYM
+
+          <ArrowDownRight
+            size={16}
+            className="
+              transition-transform
+              duration-300
+              group-hover:rotate-[-10deg]
+            "
+          />
+        </button>
+      </motion.div>
+
+      {/* =========================================================
+          BOTTOM INFO
+      ========================================================== */}
+
+      <div
+        className="
+          absolute
+          z-40
+          right-5
+          sm:right-8
+          lg:right-[5vw]
+          xl:right-[7vw]
+
+          bottom-8
+          sm:bottom-10
+          lg:bottom-12
+
+          flex
+          items-center
+          gap-4
+          sm:gap-6
+        "
+      >
+        {/* Slide indicator */}
+        <div className="flex items-center gap-2">
+          {heroLines.map((_, index) => (
+            <button
+              key={index}
+              type="button"
+              onClick={() => setActiveHero(index)}
+              aria-label={`Show slide ${index + 1}`}
+              className={`
+                h-[2px]
+                transition-all
+                duration-300
+
+                ${activeHero === index
+                  ? 'w-8 bg-[#C6FF00]'
+                  : 'w-3 bg-white/20 hover:bg-white/50'
+                }
+              `}
+            />
+          ))}
         </div>
 
+        {/* Scroll */}
         <button
           type="button"
           onClick={() => scrollTo('marquee')}
           className="
-            pointer-events-auto
-            flex
+            hidden
+            sm:flex
             items-center
             gap-3
-            text-white/35
+
+            text-white/30
             hover:text-[#C6FF00]
+
             transition-colors
           "
           aria-label="Scroll to next section"
@@ -739,32 +595,27 @@ export default function HeroSection() {
           </span>
 
           <ArrowRight
-            size={15}
+            size={14}
             className="rotate-90"
           />
         </button>
-
-        {/* Hero slide indicator */}
-        <div className="hidden sm:flex items-center gap-2">
-          {heroLines.map((_, index) => (
-            <button
-              key={index}
-              type="button"
-              onClick={() => setActiveHero(index)}
-              aria-label={`Show slide ${index + 1}`}
-              className={`
-                h-[2px]
-                transition-all
-                duration-300
-                ${activeHero === index
-                  ? 'w-8 bg-[#C6FF00]'
-                  : 'w-3 bg-white/20 hover:bg-white/50'
-                }
-              `}
-            />
-          ))}
-        </div>
       </div>
+
+      {/* Bottom fade to next section */}
+      <div
+        className="
+          absolute
+          z-25
+          inset-x-0
+          bottom-0
+          h-32
+          pointer-events-none
+        "
+        style={{
+          background:
+            'linear-gradient(to top, #030303 0%, transparent 100%)',
+        }}
+      />
     </section>
   );
 }
@@ -782,107 +633,52 @@ function HeroHeadline({
     <h1
       className="
         uppercase
+        text-center
         font-bold
-        tracking-[-0.025em]
+        tracking-[-0.04em]
+        whitespace-nowrap
       "
       style={{
-        fontFamily: 'Bebas Neue, sans-serif',
+        fontFamily: 'Inter, sans-serif',
       }}
     >
+      {/* Line 1 — white */}
       <span
         className="
           block
-          text-[clamp(72px,11vw,150px)]
-          leading-[0.78]
+          text-[13vw]
+          sm:text-[12vw]
+          md:text-[11vw]
+          lg:text-[9.5vw]
+          xl:text-[8.5vw]
+          leading-[0.85]
           text-white
         "
       >
         {hero.line1}
       </span>
 
+      {/* Line 2 — gradient fade */}
       <span
         className="
           block
-          text-[clamp(86px,13vw,175px)]
-          leading-[0.78]
-          text-[#C6FF00]
+          text-[13vw]
+          sm:text-[12vw]
+          md:text-[11vw]
+          lg:text-[9.5vw]
+          xl:text-[8.5vw]
+          leading-[0.85]
+          mt-1
+          bg-gradient-to-b
+          from-white
+          via-white
+          to-white/30
+          bg-clip-text
+          text-transparent
         "
       >
         {hero.line2}
       </span>
-
-      <span
-        className="
-          block
-          mt-2
-          text-[clamp(48px,7vw,100px)]
-          leading-[0.82]
-          text-white
-        "
-      >
-        {hero.line3}
-      </span>
-
-      <span
-        className="
-          block
-          mt-2
-          text-[clamp(48px,7vw,100px)]
-          leading-[0.82]
-          text-transparent
-        "
-        style={{
-          WebkitTextStroke:
-            '1px rgba(255,255,255,0.42)',
-        }}
-      >
-        {hero.line4}
-      </span>
     </h1>
-  );
-}
-
-/* =============================================================
-   STAT
-============================================================= */
-
-function HeroStat({
-  value,
-  label,
-}: {
-  value: string;
-  label: string;
-}) {
-  return (
-    <div>
-      <div
-        className="
-          text-2xl
-          sm:text-3xl
-          text-[#C6FF00]
-        "
-        style={{
-          fontFamily: 'Bebas Neue, sans-serif',
-        }}
-      >
-        {value}
-      </div>
-
-      <div
-        className="
-          mt-1
-          text-[9px]
-          uppercase
-          tracking-[0.18em]
-          text-white/30
-          font-semibold
-        "
-        style={{
-          fontFamily: 'Barlow Condensed, sans-serif',
-        }}
-      >
-        {label}
-      </div>
-    </div>
   );
 }
