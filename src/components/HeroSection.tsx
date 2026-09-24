@@ -162,68 +162,66 @@ export default function HeroSection() {
       </div>
 
       {/* =========================================================
-          GIANT BACKGROUND TYPOGRAPHY
-          THIS LAYER IS BEHIND THE PEOPLE
-      ========================================================== */}
+    GIANT BACKGROUND TYPOGRAPHY
+    THIS LAYER IS BEHIND THE PEOPLE
+========================================================== */}
 
       <div
         className="
-          absolute
-          inset-x-0
-          top-[7vh]
-          sm:top-[8vh]
-          lg:top-[5vh]
-          z-10
-          pointer-events-none
-          select-none
-          px-4
-          sm:px-8
-          lg:px-10
-        "
+    absolute
+    inset-x-0
+    top-[7vh]
+    sm:top-[8vh]
+    lg:top-[5vh]
+    z-30
+    lg:z-10
+    pointer-events-none
+    select-none
+    px-4
+    sm:px-8
+    lg:px-10
+  "
       >
         <div className="container-shark mx-auto">
+
           {/* Eyebrow */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             className="
-              flex
-              items-center
-              justify-center
-              gap-3
-              mb-4
-              sm:mb-6
-            "
+        flex
+        items-center
+        justify-center
+        gap-3
+        mb-4
+        sm:mb-6
+      "
           >
             <span className="w-8 sm:w-10 h-px bg-[#C6FF00]" />
 
             <span
               className="
-                text-[9px]
-                sm:text-[10px]
-                uppercase
-                tracking-[0.25em]
-                text-white/40
-                font-semibold
-              "
-              style={{
-                fontFamily: 'Barlow Condensed, sans-serif',
-              }}
+          text-[9px]
+          sm:text-[10px]
+          uppercase
+          tracking-[0.25em]
+          text-white/40
+          font-semibold
+        "
+              style={{ fontFamily: 'Barlow Condensed, sans-serif' }}
             >
               {hero.eyebrow}
             </span>
 
             <span
               className="
-                text-[#C6FF00]
-                text-[9px]
-                sm:text-[10px]
-                tracking-[0.2em]
-              "
-              style={{
-                fontFamily: 'Barlow Condensed, sans-serif',
-              }}
+          text-[#C6FF00]
+          text-[9px]
+          sm:text-[10px]
+          tracking-[0.2em]
+        "
+              style={{ fontFamily: 'Barlow Condensed, sans-serif' }}
             >
               IND
             </span>
@@ -243,13 +241,14 @@ export default function HeroSection() {
               <HeroHeadline hero={hero} />
             </motion.div>
           </AnimatePresence>
+
         </div>
       </div>
 
       {/* =========================================================
-          ATHLETE IMAGE
-          THIS IS IN FRONT OF THE TEXT
-      ========================================================== */}
+    ATHLETE IMAGE
+    THIS IS IN FRONT OF THE TEXT
+========================================================== */}
 
       <motion.div
         initial={{
@@ -268,29 +267,21 @@ export default function HeroSection() {
           ease: [0.22, 1, 0.36, 1],
         }}
         className="
-          absolute
-          z-20
-          pointer-events-none
+    absolute
+    z-20
+    pointer-events-none
 
-          bottom-[25%]
-          left-1/2
-          -translate-x-1/2
+    top-[4vh]
+    left-0
+    right-0
+    h-[70vh]
+    sm:h-[80vh]
+    lg:h-full
+    max-w-none
 
-          w-[125vw]
-          max-w-none
-          h-[72vh]
-
-          sm:w-[105vw]
-          sm:h-[76vh]
-          sm:bottom-[16%]
-
-          lg:w-[780px]
-          lg:h-[770px]
-          lg:bottom-[6%]
-
-          xl:w-[850px]
-          xl:h-[820px]
-        "
+    z-[5]
+    lg:z-20
+  "
       >
         <Image
           src={HERO_IMAGE}
@@ -298,18 +289,17 @@ export default function HeroSection() {
           fill
           priority
           sizes="
-            (max-width: 640px) 125vw,
-            (max-width: 1024px) 105vw,
-            850px
+            (max-width: 640px) 110vw,
+            (max-width: 1024px) 90vw,
+            780px
           "
           className="
-            object-contain
-            object-bottom
+            object-cover
+            object-top
             drop-shadow-[0_0_45px_rgba(198,255,0,0.08)]
           "
         />
       </motion.div>
-
       {/* =========================================================
           SUPPORTING COPY
       ========================================================== */}
@@ -646,7 +636,7 @@ function HeroHeadline({
       <span
         className="
           block
-          text-[13vw]
+          text-[11vw]
           sm:text-[12vw]
           md:text-[11vw]
           lg:text-[9.5vw]
@@ -662,7 +652,7 @@ function HeroHeadline({
       <span
         className="
           block
-          text-[13vw]
+          text-[8vw]
           sm:text-[12vw]
           md:text-[11vw]
           lg:text-[9.5vw]
