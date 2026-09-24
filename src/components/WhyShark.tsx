@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
+import Image from 'next/image';
 
 const reasons = [
   {
@@ -124,83 +125,63 @@ export default function WhyShark() {
             ))}
           </div>
 
-          {/* Center: Image / Visual */}
+          {/* Center: Real Facility Visual */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={inView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 1, delay: 0.3 }}
-            className="flex-shrink-0 w-full max-w-[280px] mx-auto lg:mx-0"
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="flex-shrink-0 w-full max-w-[300px] mx-auto lg:mx-0"
           >
             <div
-              className="relative aspect-[3/4] w-full overflow-hidden"
+              className="relative aspect-[3/4] w-full overflow-hidden border border-white/[0.08] group"
               style={{
                 clipPath: 'polygon(10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%, 0 10%)',
               }}
             >
-              {/* Abstract athlete visual */}
-              <div
-                className="absolute inset-0"
-                style={{
-                  background: 'linear-gradient(180deg, #0D0D0D 0%, #080808 60%, #050505 100%)',
-                }}
+              <Image
+                src="https://res.cloudinary.com/dh05cgeok/image/upload/f_auto,q_auto/v1790264446/functional-turf_qvyxzk.png"
+                alt="The Shark Fitness Functional Athletic Zone"
+                fill
+                sizes="(max-width: 1024px) 100vw, 300px"
+                className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="bg-grid absolute inset-0" />
 
-              {/* Central graphic */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center">
-                {/* Shark fin silhouette shape */}
-                <svg
-                  viewBox="0 0 200 200"
-                  className="w-32 h-32 mb-6"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  {/* Abstract fin-inspired shape */}
-                  <path
-                    d="M100 180 L30 180 L30 120 Q30 40 100 20 Q110 60 140 100 L180 80 L160 180 Z"
-                    fill="rgba(198,255,0,0.08)"
-                    stroke="#C6FF00"
-                    strokeWidth="1"
-                  />
-                  <path
-                    d="M100 180 L60 180 L60 140 Q60 80 100 60 Q115 90 130 120 L150 110 L140 180 Z"
-                    fill="rgba(198,255,0,0.06)"
-                    stroke="#C6FF00"
-                    strokeWidth="0.5"
-                    strokeDasharray="4 4"
-                  />
-                  {/* Diagonal slashes */}
-                  <line x1="40" y1="180" x2="100" y2="20" stroke="#C6FF00" strokeWidth="0.5" strokeOpacity="0.3" />
-                  <line x1="60" y1="180" x2="140" y2="60" stroke="#C6FF00" strokeWidth="0.3" strokeOpacity="0.2" />
-                </svg>
+              {/* Dark overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-black/30" />
 
-                <div
-                  className="text-[#C6FF00] font-display text-center"
-                  style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '32px', letterSpacing: '0.1em', lineHeight: 1 }}
-                >
-                  THE SHARK
-                </div>
-                <div
-                  className="text-white/20 text-xs uppercase tracking-widest mt-2"
-                  style={{ fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 600 }}
-                >
-                  Indore, MP
+              {/* Center content */}
+              <div className="absolute inset-0 flex flex-col justify-between p-6 z-10">
+                <div className="flex justify-between items-center">
+                  <span
+                    className="px-2.5 py-1 bg-black/80 border border-[#C6FF00]/40 text-[#C6FF00] text-[10px] font-mono tracking-widest uppercase"
+                  >
+                    FACILITY PROVEN
+                  </span>
+                  <div className="w-2.5 h-2.5 bg-[#C6FF00]" />
                 </div>
 
-                {/* Replace with athlete photo */}
-                <div
-                  className="mt-6 text-white/15 text-[10px] text-center uppercase tracking-widest"
-                  style={{ fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 600 }}
-                >
-                  Add trainer photo here
+                <div>
+                  <div
+                    className="text-white font-display text-3xl leading-none mb-1"
+                    style={{ fontFamily: 'Bebas Neue, sans-serif' }}
+                  >
+                    THE SHARK
+                  </div>
+                  <div
+                    className="text-[#C6FF00] font-display text-xl tracking-widest"
+                    style={{ fontFamily: 'Bebas Neue, sans-serif' }}
+                  >
+                    EXPERIENCE
+                  </div>
+                  <p className="text-white/60 text-xs mt-2" style={{ fontFamily: 'Inter, sans-serif' }}>
+                    Olympic platforms, turf &amp; personalized coaching
+                  </p>
                 </div>
               </div>
 
-              {/* Lime glow bottom */}
-              <div
-                className="absolute bottom-0 left-0 right-0 h-1/3"
-                style={{ background: 'linear-gradient(to top, rgba(198,255,0,0.06), transparent)' }}
-              />
+              {/* Corner brackets */}
+              <div className="absolute top-3 left-3 w-4 h-4 border-t-2 border-l-2 border-[#C6FF00] z-20 pointer-events-none" />
+              <div className="absolute bottom-3 right-3 w-4 h-4 border-b-2 border-r-2 border-[#C6FF00] z-20 pointer-events-none" />
             </div>
           </motion.div>
 
@@ -232,14 +213,15 @@ function ReasonCard({
       initial={{ opacity: 0, x: align === 'right' ? -30 : 30 }}
       animate={inView ? { opacity: 1, x: 0 } : {}}
       transition={{ duration: 0.65, delay }}
-      className={`group flex gap-4 items-start p-5 border border-white/[0.06] bg-[#0D0D0D]/50 hover:border-[#C6FF00]/30 hover:bg-[#0D0D0D] transition-all duration-300 ${
+      className={`group flex gap-5 items-start border border-white/[0.08] bg-[#0C0C0C] hover:border-[#C6FF00]/40 hover:bg-[#111111] transition-all duration-300 ${
         align === 'right' ? 'flex-row-reverse text-right' : 'flex-row text-left'
       }`}
+      style={{ padding: '24px 22px' }}
     >
       {/* Lime circle */}
-      <div className="flex-shrink-0 w-10 h-10 rounded-full border border-[#C6FF00]/30 flex items-center justify-center group-hover:border-[#C6FF00] group-hover:bg-[#C6FF00]/10 transition-all duration-200">
+      <div className="flex-shrink-0 w-11 h-11 rounded-none border border-[#C6FF00]/30 flex items-center justify-center group-hover:border-[#C6FF00] group-hover:bg-[#C6FF00]/10 transition-all duration-200">
         <span
-          className="text-[#C6FF00] font-display text-sm"
+          className="text-[#C6FF00] font-display text-base"
           style={{ fontFamily: 'Bebas Neue, sans-serif', letterSpacing: '0.05em' }}
         >
           {reason.id}
@@ -247,12 +229,15 @@ function ReasonCard({
       </div>
       <div className="flex-1">
         <h3
-          className="text-white font-condensed font-700 mb-1 group-hover:text-[#C6FF00] transition-colors duration-200"
-          style={{ fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700, fontSize: '16px', letterSpacing: '0.05em' }}
+          className="text-white font-condensed font-700 mb-2 group-hover:text-[#C6FF00] transition-colors duration-200"
+          style={{ fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700, fontSize: '18px', letterSpacing: '0.04em' }}
         >
           {reason.title}
         </h3>
-        <p className="text-white/40 text-sm leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
+        <p
+          className="text-white/60 text-sm leading-relaxed"
+          style={{ fontFamily: 'Inter, sans-serif', lineHeight: 1.6 }}
+        >
           {reason.desc}
         </p>
       </div>

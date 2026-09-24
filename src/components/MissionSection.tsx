@@ -91,7 +91,7 @@ export default function MissionSection() {
         </motion.p>
 
         {/* Two floating feature cards */}
-        <div className="flex flex-col sm:flex-row justify-center gap-6 max-w-2xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-3xl mx-auto">
           {[
             {
               title: 'BUILT FOR YOU',
@@ -109,19 +109,25 @@ export default function MissionSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, delay: card.delay }}
-              className="flex-1 p-6 border border-white/[0.08] bg-black/60 backdrop-blur-sm text-left hover:border-[#C6FF00]/30 transition-all duration-300 group"
-              style={{
-                clipPath: 'polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px))',
-              }}
+              className="relative p-8 border border-white/[0.08] border-t-2 border-t-[#C6FF00] bg-[#0E0E0E] text-left hover:border-[#C6FF00]/40 transition-all duration-300 group shadow-lg"
+              style={{ padding: '32px 28px' }}
             >
-              <div className="w-2 h-2 bg-[#C6FF00] mb-4 group-hover:scale-110 transition-transform duration-200" />
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-2.5 h-2.5 bg-[#C6FF00]" />
+                <span className="text-[#C6FF00] text-[11px] font-mono tracking-widest uppercase">
+                  PHILOSOPHY
+                </span>
+              </div>
               <h3
                 className="text-white font-condensed font-700 mb-3 group-hover:text-[#C6FF00] transition-colors duration-200"
-                style={{ fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700, fontSize: '20px', letterSpacing: '0.05em' }}
+                style={{ fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700, fontSize: '24px', letterSpacing: '0.04em' }}
               >
                 {card.title}
               </h3>
-              <p className="text-white/40 text-sm leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
+              <p
+                className="text-white/60 text-sm leading-relaxed"
+                style={{ fontFamily: 'Inter, sans-serif', lineHeight: 1.6 }}
+              >
                 {card.desc}
               </p>
             </motion.div>

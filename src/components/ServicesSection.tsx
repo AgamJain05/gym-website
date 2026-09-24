@@ -129,6 +129,7 @@ export default function ServicesSection() {
                     : 'bg-[#0D0D0D] border border-white/[0.06]'
                 }`}
                 style={{
+                  padding: '30px 24px',
                   clipPath: 'polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px))',
                   transform: isHovered ? 'translateY(-4px)' : 'translateY(0)',
                   boxShadow: isHovered ? '0 8px 40px rgba(198,255,0,0.08)' : 'none',

@@ -33,14 +33,15 @@
   --font-body: 'Inter', sans-serif;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 html {
   scroll-behavior: smooth;
+}
+
+button, a, input, textarea {
+  outline: none;
+}
+button:focus, a:focus, input:focus, textarea:focus {
+  outline: none;
 }
 
 body {

@@ -8,6 +8,7 @@ import MissionSection from '@/components/MissionSection';
 import WhyShark from '@/components/WhyShark';
 import GoalsSection from '@/components/GoalsSection';
 import GallerySection from '@/components/GallerySection';
+import TestimonialsSection from '@/components/TestimonialsSection';
 import PlansSection from '@/components/PlansSection';
 import LocationSection from '@/components/LocationSection';
 import FAQSection from '@/components/FAQSection';
@@ -117,9 +118,14 @@ export default function HomePage() {
       {/* 06 — Facility Gallery */}
       <GallerySection />
 
+      <SectionDivider label="Reviews" />
+
+      {/* 07 — Member Testimonials */}
+      <TestimonialsSection />
+
       <SectionDivider label="Membership" />
 
-      {/* 07 — Membership Plans */}
+      {/* 08 — Membership Plans */}
       <PlansSection />
 
       <SectionDivider label="Location" />

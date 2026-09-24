@@ -107,54 +107,72 @@ export default function FAQSection() {
           </div>
 
           {/* Right: FAQ accordion */}
-          <div className="flex flex-col gap-2">
+          <div className="border border-white/[0.08] bg-[#0A0A0A] divide-y divide-white/[0.06] overflow-hidden">
             {faqs.map((faq, i) => {
               const isOpen = openIndex === i;
               return (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 15 }}
                   animate={inView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: i * 0.06 + 0.2 }}
-                  className={`border transition-all duration-300 ${
-                    isOpen ? 'border-[#C6FF00]/30 bg-[#0D0D0D]' : 'border-white/[0.06] bg-[#080808]'
+                  transition={{ duration: 0.4, delay: i * 0.05 + 0.2 }}
+                  className={`transition-colors duration-200 ${
+                    isOpen ? 'bg-[#111111]' : 'bg-transparent hover:bg-white/[0.02]'
                   }`}
                 >
                   <button
-                    className="w-full flex items-center justify-between gap-4 p-5 text-left"
+                    className="w-full flex items-center justify-between gap-6 text-left outline-none cursor-pointer group"
+                    style={{ padding: '22px 24px' }}
                     onClick={() => setOpenIndex(isOpen ? null : i)}
                     aria-expanded={isOpen}
                     id={`faq-btn-${i}`}
                   >
                     <span
-                      className={`font-condensed font-700 text-base transition-colors duration-200 ${isOpen ? 'text-white' : 'text-white/60'}`}
-                      style={{ fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700, letterSpacing: '0.02em', fontSize: '17px' }}
+                      className={`font-condensed font-700 text-lg transition-colors duration-200 ${
+                        isOpen ? 'text-[#C6FF00]' : 'text-white/80 group-hover:text-white'
+                      }`}
+                      style={{
+                        fontFamily: 'Barlow Condensed, sans-serif',
+                        fontWeight: 700,
+                        letterSpacing: '0.02em',
+                        fontSize: '18px',
+                      }}
                     >
                       {faq.q}
                     </span>
-                    <div className={`flex-shrink-0 w-8 h-8 border flex items-center justify-center transition-all duration-200 ${isOpen ? 'border-[#C6FF00] bg-[#C6FF00]/10' : 'border-white/10'}`}>
+                    <div
+                      className={`flex-shrink-0 w-8 h-8 flex items-center justify-center transition-all duration-200 ${
+                        isOpen
+                          ? 'border border-[#C6FF00] bg-[#C6FF00]/15 text-[#C6FF00]'
+                          : 'border border-white/10 text-white/50 group-hover:border-white/30 group-hover:text-white'
+                      }`}
+                    >
                       {isOpen ? (
-                        <Minus size={14} color="#C6FF00" />
+                        <Minus size={15} color="#C6FF00" />
                       ) : (
-                        <Plus size={14} color="rgba(255,255,255,0.4)" />
+                        <Plus size={15} />
                       )}
                     </div>
                   </button>
+
                   <AnimatePresence>
                     {isOpen && (
                       <motion.div
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: 'auto', opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+                        transition={{ duration: 0.25, ease: 'easeOut' }}
                         className="overflow-hidden"
                       >
-                        <p
-                          className="px-5 pb-5 text-white/50 text-sm leading-relaxed"
-                          style={{ fontFamily: 'Inter, sans-serif' }}
-                        >
-                          {faq.a}
-                        </p>
+                        <div style={{ padding: '0 24px 24px 24px' }}>
+                          <div className="w-8 h-[1px] bg-[#C6FF00]/40 mb-3" />
+                          <p
+                            className="text-white/70 text-sm md:text-base leading-relaxed"
+                            style={{ fontFamily: 'Inter, sans-serif', lineHeight: 1.65 }}
+                          >
+                            {faq.a}
+                          </p>
+                        </div>
                       </motion.div>
                     )}
                   </AnimatePresence>

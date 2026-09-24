@@ -164,8 +164,8 @@ export default function ContactSection() {
             ) : (
               <form
                 onSubmit={handleSubmit}
-                className="p-8 border border-white/[0.07] bg-[#0D0D0D] flex flex-col gap-5"
-                style={{ clipPath: 'polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px))' }}
+                className="border border-white/[0.07] bg-[#0D0D0D] flex flex-col gap-5"
+                style={{ padding: '36px 32px', clipPath: 'polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px))' }}
               >
                 {/* Corner accents */}
                 <div className="relative">

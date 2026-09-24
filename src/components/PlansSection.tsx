@@ -165,6 +165,7 @@ export default function PlansSection() {
                       : 'bg-[#080808] border border-white/[0.07]'
                   }`}
                   style={{
+                    padding: '36px 28px',
                     boxShadow: isActive ? '0 0 40px rgba(198,255,0,0.08)' : 'none',
                   }}
                 >

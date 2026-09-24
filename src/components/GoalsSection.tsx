@@ -137,6 +137,7 @@ export default function GoalsSection() {
                 i === 1 ? 'lg:mt-8' : ''
               } ${i === 3 ? 'lg:mt-4' : ''}`}
               style={{
+                padding: '30px 24px',
                 clipPath: 'polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px))',
               }}
             >

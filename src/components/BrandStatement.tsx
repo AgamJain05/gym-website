@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
+import Image from 'next/image';
 
 const useReveal = (threshold = 0.2) => {
   const ref = useRef(null);
@@ -116,65 +117,50 @@ export default function BrandStatement() {
             transition={{ duration: 0.9, delay: 0.2 }}
             className="relative"
           >
-            {/* Main image placeholder — replace with actual gym photo */}
+            {/* Real gym photo showcase */}
             <div
-              className="relative w-full aspect-[4/5] overflow-hidden"
+              className="relative w-full aspect-[4/5] overflow-hidden group"
               style={{
                 clipPath: 'polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 24px 100%, 0 calc(100% - 24px))',
               }}
             >
-              {/* Abstract gym visual */}
-              <div
-                className="absolute inset-0"
-                style={{
-                  background: 'linear-gradient(135deg, #0D0D0D 0%, #080808 40%, #050505 100%)',
-                }}
+              <Image
+                src="https://res.cloudinary.com/dh05cgeok/image/upload/f_auto,q_auto/v1790264446/strength-cables_e13hsd.png"
+                alt="The Shark Fitness Cable and Strength Zone"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="bg-grid absolute inset-0 opacity-100" />
 
-              {/* Decorative content representing gym */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center p-12">
-                {/* Icon representing weights/gym */}
-                <div className="mb-8">
-                  <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="0" y="34" width="20" height="12" rx="2" fill="rgba(198,255,0,0.15)" stroke="#C6FF00" strokeWidth="1"/>
-                    <rect x="20" y="26" width="8" height="28" rx="2" fill="rgba(198,255,0,0.25)" stroke="#C6FF00" strokeWidth="1"/>
-                    <rect x="28" y="20" width="24" height="40" rx="2" fill="rgba(198,255,0,0.1)" stroke="#C6FF00" strokeWidth="1"/>
-                    <rect x="52" y="26" width="8" height="28" rx="2" fill="rgba(198,255,0,0.25)" stroke="#C6FF00" strokeWidth="1"/>
-                    <rect x="60" y="34" width="20" height="12" rx="2" fill="rgba(198,255,0,0.15)" stroke="#C6FF00" strokeWidth="1"/>
-                    <line x1="28" y1="40" x2="52" y2="40" stroke="#C6FF00" strokeWidth="2"/>
-                  </svg>
-                </div>
+              {/* Dark athletic vignette */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-black/30" />
 
-                <div
-                  className="text-center font-display text-[#C6FF00] mb-2"
-                  style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '48px', letterSpacing: '0.1em', lineHeight: 1 }}
+              {/* Top watermark badge */}
+              <div className="absolute top-5 left-5 z-10">
+                <span
+                  className="px-3 py-1 bg-black/80 border border-[#C6FF00]/40 text-[#C6FF00] text-[11px] font-condensed font-700 tracking-widest uppercase backdrop-blur-sm"
+                  style={{ fontFamily: 'Barlow Condensed, sans-serif' }}
                 >
-                  THE SHARK
-                </div>
+                  JERAI PERFORMANCE APPARATUS · INDORE
+                </span>
+              </div>
+
+              {/* Bottom text overlay */}
+              <div className="absolute bottom-6 left-6 right-6 z-10">
                 <div
-                  className="text-center font-display text-white/20 mb-6"
-                  style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '24px', letterSpacing: '0.2em' }}
+                  className="text-white font-display text-2xl md:text-3xl tracking-wide leading-none mb-1"
+                  style={{ fontFamily: 'Bebas Neue, sans-serif' }}
                 >
-                  FITNESS
+                  ENGINEERED FOR PEAK OUTPUT
                 </div>
-                <div
-                  className="text-center text-white/30 text-xs uppercase tracking-widest max-w-[200px]"
-                  style={{ fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 600, letterSpacing: '0.2em' }}
-                >
-                  Replace with actual gym photography
-                </div>
+                <p className="text-white/60 text-xs font-light" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  Multi-cable stacks, heavy Olympic bars, and pristine biometric machines.
+                </p>
               </div>
 
               {/* Corner brackets */}
-              <div className="absolute top-4 left-4 w-6 h-6 border-t border-l border-[#C6FF00]" />
-              <div className="absolute bottom-4 right-4 w-6 h-6 border-b border-r border-[#C6FF00]" />
-
-              {/* Lime glow */}
-              <div
-                className="absolute bottom-0 left-0 right-0 h-1/2"
-                style={{ background: 'linear-gradient(to top, rgba(198,255,0,0.04), transparent)' }}
-              />
+              <div className="absolute top-4 left-4 w-6 h-6 border-t border-l border-[#C6FF00] z-20 pointer-events-none" />
+              <div className="absolute bottom-4 right-4 w-6 h-6 border-b border-r border-[#C6FF00] z-20 pointer-events-none" />
             </div>
 
             {/* Floating stat card */}
