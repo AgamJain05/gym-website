@@ -84,7 +84,7 @@ export default function HeroSection() {
 
       {/* Main Content */}
       <div className="relative z-10 flex-1 flex items-center">
-        <div className="container-shark w-full pt-32 pb-16">
+        <div className="container-shark w-full pt-48 pb-16 mt-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left: Headline + CTA */}
             <div>

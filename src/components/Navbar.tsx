@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Menu } from 'lucide-react';
 
+import Image from 'next/image';
+
 const navLinks = [
   { label: 'Home', href: '#home' },
   { label: 'About', href: '#about' },
@@ -53,31 +55,27 @@ export default function Navbar() {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled
-            ? 'bg-black/90 backdrop-blur-md border-b border-white/[0.06] py-3'
-            : 'bg-transparent py-5'
-        }`}
+        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${scrolled
+            ? 'bg-black/95 backdrop-blur-md border-b border-white/[0.06] py-2'
+            : 'bg-transparent py-4'
+          }`}
       >
         <div className="container-shark flex items-center justify-between">
           {/* Logo */}
           <a
             href="#home"
             onClick={(e) => { e.preventDefault(); handleNavClick('#home'); }}
-            className="flex flex-col leading-none group cursor-pointer"
+            className="flex items-center gap-3 cursor-pointer group"
           >
-            <span
-              className="text-white font-display text-2xl tracking-wider transition-colors duration-200 group-hover:text-[#C6FF00]"
-              style={{ fontFamily: 'Bebas Neue, sans-serif', letterSpacing: '0.1em' }}
-            >
-              THE SHARK
-            </span>
-            <span
-              className="text-[#C6FF00] font-display text-2xl tracking-wider"
-              style={{ fontFamily: 'Bebas Neue, sans-serif', letterSpacing: '0.18em' }}
-            >
-              FITNESS
-            </span>
+            <div className="relative w-40 h-10 md:w-48 md:h-12">
+              <Image
+                src="https://res.cloudinary.com/dh05cgeok/image/upload/f_auto,q_auto/v1790265082/69c5568b-7395-4d41-8f18-a14bd4ac3e8b.png"
+                alt="The Shark Fitness Logo"
+                fill
+                className="object-contain object-left"
+                priority
+              />
+            </div>
           </a>
 
           {/* Desktop Nav */}
@@ -87,11 +85,10 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
-                className={`font-condensed text-sm font-600 uppercase tracking-widest transition-colors duration-200 cursor-pointer ${
-                  activeLink === link.href.replace('#', '')
+                className={`font-condensed text-sm font-600 uppercase tracking-widest transition-colors duration-200 cursor-pointer ${activeLink === link.href.replace('#', '')
                     ? 'text-[#C6FF00]'
                     : 'text-white/70 hover:text-white'
-                }`}
+                  }`}
                 style={{ fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 600, letterSpacing: '0.15em', fontSize: '13px' }}
               >
                 {link.label}
@@ -108,7 +105,7 @@ export default function Navbar() {
             >
               JOIN NOW
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M1 7H13M8 2L13 7L8 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M1 7H13M8 2L13 7L8 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </a>
             <button
@@ -172,7 +169,7 @@ export default function Navbar() {
               >
                 JOIN NOW
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M1 7H13M8 2L13 7L8 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M1 7H13M8 2L13 7L8 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </a>
             </div>
